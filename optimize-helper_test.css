@@ -1,0 +1,18 @@
+
+.petition-inputs_variation .petition_pledge_action .signature-form .form-type-select label,
+.petition-inputs_variation .petition_pledge_action .signature-form .form-type-textfield label {
+	width: 80px;
+	display: inline-block !important;
+	padding-right: 10px;
+	text-align: right;
+}
+
+.petition-inputs_variation .petition_pledge_action .signature-form .form-select,
+.petition-inputs_variation .petition_pledge_action .signature-form .form-text {
+	width: 280px;
+}
+
+
+.experiment2_variation1 * {
+	border: 1px solid red;
+}

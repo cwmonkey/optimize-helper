@@ -1,0 +1,27 @@
+html,
+body {
+	background: #fff;
+	border-radius: 1em;
+}
+
+fieldset {
+	border: none;
+}
+
+.text label,
+.radio label {
+	display: none;
+}
+
+.text,
+.radio {
+	display: inline;
+}
+
+.text input {
+	width: 5em;
+}
+
+#add legend {
+	display: none;
+}
