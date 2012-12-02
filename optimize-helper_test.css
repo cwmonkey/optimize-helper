@@ -1,18 +1,99 @@
+/* Move takepart wrapper out the way */
 
-.petition-inputs_variation .petition_pledge_action .signature-form .form-type-select label,
-.petition-inputs_variation .petition_pledge_action .signature-form .form-type-textfield label {
+.optimize-helper #page-wrapper {
+	margin: 0;
+}
+
+body .optimize-helper {
+	display: none;
+}
+
+/* ----------------
+   petition-inputs
+   http://www.takepart.com/actions/blow-whistle-keep-government-accountable
+   ---------------- */
+
+/* ---- variation1 */
+
+.petition-inputs_variation1 .petition_pledge_action .signature-form .form-type-select label,
+.petition-inputs_variation1 .petition_pledge_action .signature-form .form-type-textfield label {
 	width: 80px;
 	display: inline-block !important;
 	padding-right: 10px;
 	text-align: right;
 }
 
-.petition-inputs_variation .petition_pledge_action .signature-form .form-select,
-.petition-inputs_variation .petition_pledge_action .signature-form .form-text {
+.petition-inputs_variation1 .petition_pledge_action .signature-form .form-select,
+.petition-inputs_variation1 .petition_pledge_action .signature-form .form-text {
 	width: 280px;
 }
 
-
-.experiment2_variation1 * {
-	border: 1px solid red;
+.petition-inputs_variation1 .petition_pledge_action .signature-form .field-name-field-sig-zip-code input,
+.petition-inputs_variation1 .petition_pledge_action .signature-form .field-name-field-sig-postal-code input {
+	width: 110px;
 }
+
+/* ---- variation1 */
+
+.petition-inputs_variation2 .form-item {
+	clear: both;
+}
+
+.petition-inputs_variation2 .field-name-field-sig-last-name,
+.petition-inputs_variation2 .field-name-field-sig-first-name {
+	width: 200px;
+	float: left;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .signature-form .form-type-select label,
+.petition-inputs_variation2 .petition_pledge_action .signature-form .form-type-textfield label {
+	width: auto;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-last-name .form-text,
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-first-name .form-text {
+	width: 180px;
+}
+
+
+.petition-inputs_variation2 .field-name-field-sig-city,
+.petition-inputs_variation2 .field-name-field-sig-state,
+.petition-inputs_variation2 .field-name-field-sig-zip-code {
+	float: left;
+}
+
+.petition-inputs_variation2 .field-name-field-sig-city {
+	width: 200px;
+}
+
+.petition-inputs_variation2 .field-name-field-sig-state {
+	width: 90px;
+}
+
+.petition-inputs_variation2 .field-name-field-sig-zip-code {
+	width: 110px;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-city .form-text {
+	width: 180px;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-state .form-select {
+	width: 70px;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-state select {
+	display: none;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-state select.optimize-helper {
+	display: inline-block;
+}
+
+.petition-inputs_variation2 .petition_pledge_action .field-name-field-sig-zip-code .form-text {
+	width: 90px;
+}
+
+
+/* -------------------- */
+

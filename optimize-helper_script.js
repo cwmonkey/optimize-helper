@@ -49,6 +49,7 @@ $(function() {
 		$experiment.data('variation_num', '1');
 		$experiments.append($experiment);
 		experiment_num++;
+		resize();
 		// $experiment.find('.add_variation input').click();
 		return $experiment;
 	};
@@ -74,15 +75,18 @@ $(function() {
 		$variation.find('.radio input').attr({checked: 'checked'});
 		update_body_class();
 		save_experiments();
+		resize();
 	};
 
 	var update_body_class = function() {
 		$('.experiment').each(function() {
 			var c = $('.radio input:checked', this).closest('.variation_container').find('input[type="text"]').val();
+			var on = $('input[type="checkbox"]', this).is(':checked');
+
 			$(this).find('.text [type="text"]').each(function() {
 				var val = $(this).val();
 
-				if ( val != c ) {
+				if ( val != c || !on ) {
 					post('bodyRemoveClass:' + val);
 				} else {
 					post('bodyAddClass:' + val);
@@ -95,13 +99,14 @@ $(function() {
 		var experiments = [];
 
 		$('.experiment').each(function() {
-			var c = $('h2 input', this).val();
+			var c = $('h2 input[type="text"]', this).val();
+			var on = $('input[type="checkbox"]', this).is(':checked');
 			var variations = [];
 			$(this).find('.text [type="text"]').each(function() {
 				var val = $(this).val();
 				variations.push(val);
 			});
-			experiments.push({name: c, variations: variations});
+			experiments.push({name: c, on: on, variations: variations});
 		});
 
 		set('experiments', experiments);
@@ -121,6 +126,10 @@ $(function() {
 			update_body_class();
 		})
 		.delegate('input[type="text"]', 'change keypress', function() {
+			update_body_class();
+			save_experiments();
+		})
+		.delegate('input[type="checkbox"]', 'change', function() {
 			update_body_class();
 			save_experiments();
 		})
@@ -288,45 +297,6 @@ $(function() {
 		post('resize:' + $body.width() + 'x' + $body[0].scrollHeight);
 	};
 
-	// Main program
-	// $body
-	// 	.bind('dragstart', function(e) {
-	// 		drag_random = true;
-	// 		return true;
-	// 	})
-	// 	.bind('dragover', function(e) {
-	// 		e.preventDefault();
-	// 		return true;
-	// 	})
-	// 	.bind('dragleave', function(e) {
-	// 		drag_enters--;
-	// 		if ( !drag_enters ) $body.removeClass('dragenter');
-	// 		return true;
-	// 	})
-	// 	.bind('dragenter', function(e) {
-	// 		drag_enters++;
-	// 		$body.addClass('dragenter');
-	// 		return true;
-	// 	})
-	// 	.bind('drop', function(e) {
- 	//     	e.preventDefault();
-	// 		$body.removeClass('dragenter');
-	// 		var data;
-	// 		if ( drag_random ) {
-	// 			data = $('#random img')[0].src;
-	// 		} else {
-	// 			data = e.originalEvent.dataTransfer.getData('text');
-	// 		}
-	// 		if ( data == document.location ) return true;
-	// 		$src.val(data);
-	// 		$add_image.submit();
-	// 		return true;
-	// 	})
-	// 	.bind('dragend', function() {
-	// 		drag_random = false;
-	// 	})
-	// 	;
-
 	// images = get('images', true);
 	// if ( !images || typeof images != 'object' ) images = [];
 
@@ -364,11 +334,15 @@ $(function() {
 	// update_body_class();
 
 	experiments = get('experiments', true);
-console.log(experiments);
+
 	if ( experiments != undefined ) {
 		for ( var experiment_i in experiments ) {
 			var experiment = experiments[experiment_i];
 			var $experiment = add_experiment(experiment.name);
+
+			if ( !experiment.on ) {
+				$experiment.find('input[type="checkbox"]').attr({checked: null});
+			}
 
 			for ( var variation_i in experiment.variations ) {
 				var variation = experiment.variations[variation_i];

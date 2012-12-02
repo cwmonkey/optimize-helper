@@ -11,7 +11,6 @@
 
 <body>
 	<div id="page">
-		<h1>Optimize it, sucka</h1>
 		<div id="experiments">
 		</div>
 		<p id="add_experiment">
@@ -22,9 +21,11 @@
 	<script id="experimenttpl" type="x-javascript-template">
 		<div id="experiment_{experiment}" class="experiment"  data-experiment="{experiment}">
 			<h2>
-				<label for="experiment_name_{experiment}">Experiment:</label>
+				<input type="checkbox" name="experiment_on_{experiment}" id="experiment_on_{experiment}" value="1" checked="checked" />
+				<label for="experiment_on_{experiment}">Experiment:</label>
 				<input type="text" name="experiment_name" id="experiment_name_{experiment}" value="{experiment_name}" />
 			</h2>
+			<h3>Variations</h3>
 			<div id="experiment_variations_{experiment}" class="experiment_variations">
 			</div>
 			<p id="add_variation_{experiment}" class="add_variation">

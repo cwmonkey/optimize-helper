@@ -96,11 +96,11 @@ var main_init = function() {
 						// 	window.focus();
 						// 	insertAtCaret(last_textarea, param);
 						// 	break;
-						// case 'resize':
-						// 	var d = param.split('x');
-						// 	if ( d[1] > $(window).height() ) d[1] = $(window).height();
-						// 	$div.css({width: d[0] + 'px', height: d[1] + 'px'});
-						// 	break;
+						case 'resize':
+							var d = param.split('x');
+							if ( d[1] > $(window).height() ) d[1] = $(window).height();
+							$div.css({width: d[0] + 'px', height: d[1] + 'px'});
+							break;
 						// case 'close':
 						// 	$div.fadeOut(function() {
 						// 		$div.remove();
@@ -119,12 +119,12 @@ var main_init = function() {
 		$div.append($iframe);
 		$body.append($div);
 		$div.css({
-			width:200,
-			height:'100%',
-			position:'fixed',
-			top:0,
-			right:0,
-			zIndex:2000
+			width: 270,
+			height: 300,
+			position:  'fixed',
+			top: 0,
+			right: 0,
+			zIndex: 2000
 		});
 
 		if ( !$link[0] ) {
@@ -134,6 +134,9 @@ var main_init = function() {
 		} else {
 			$link.attr({href: link_href});
 		}
+
+		$body.addClass('optimize-helper');
+		includejs(site_url + '/optimize-helper_test.js?' + (new Date().getTime()));
 	})(window.jQuery);
 }
 

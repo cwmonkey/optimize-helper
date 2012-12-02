@@ -1,16 +1,38 @@
-html,
-body {
+html {
 	background: #fff;
 	border-radius: 1em;
+	border: 1px solid #ddd;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-size: 1em;
+	margin: .5em 0;
+	font-weight: normal;
+}
+
+h3,
+.experiment_variations,
+.add_variation {
+	margin-left: 1em;
 }
 
 fieldset {
 	border: none;
 }
 
-.text label,
-.radio label {
+.experiment {
+	border-radius: .5em;
+	border: 1px solid #ddd;
+	padding: .5em;
+	margin-bottom: .5em;
+}
+
+label {
 	display: none;
+}
+
+.add_variation {
+	text-align: right;
 }
 
 .text,
@@ -19,7 +41,7 @@ fieldset {
 }
 
 .text input {
-	width: 5em;
+	width: 11em;
 }
 
 #add legend {
